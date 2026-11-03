@@ -13,7 +13,7 @@ export const contacts = {
   email: 'chiriac.adrian2296@gmail.com',
   phone: '+39 393 430 7178',
   phoneHref: 'tel:+393934307178',
-  linkedin: 'https://www.linkedin.com/in/adrian-chiriac-356629141/',
+  linkedin: 'https://www.linkedin.com/in/chiriacadrian2296/',
   github: 'https://github.com/chiriacadrian2296',
   cv: 'cv/Adrian-Chiriac-CV.pdf',
 };
