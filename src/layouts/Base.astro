@@ -1,0 +1,84 @@
+---
+import type { Lang } from '../content';
+import { ui } from '../content';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  /** Path of the same page in the other language, relative to the site base. */
+  altPath: string;
+}
+
+const { lang, title, description, altPath } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const home = lang === 'it' ? base : `${base}en/`;
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="alternate" hreflang={lang === 'it' ? 'en' : 'it'} href={`${base}${altPath}`} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+  <nav class="top">
+    <a class="brand" href={home}>Adrian Chiriac</a>
+    <a class="lang" href={`${base}${altPath}`} hreflang={lang === 'it' ? 'en' : 'it'}>{ui.switchLang[lang]}</a>
+  </nav>
+  <slot />
+  <footer>© 2026 Adrian Chiriac</footer>
+</body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: #0e1116; --surface: #141a22; --text: #e6e9ef; --muted: #9aa5b4; --line: #232b36;
+    --accent: #4ea1ff; --accent-soft: rgba(78, 161, 255, .16); --head: #cfe2ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); color-scheme: dark; }
+  body {
+    font-family: Lato, 'Segoe UI', Arial, sans-serif; font-size: 17px; line-height: 1.6;
+    color: var(--text); background: var(--bg);
+    max-width: 1040px; margin: 0 auto; padding: 0 24px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3 { font-family: Rubik, sans-serif; line-height: 1.15; }
+  h2 {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 22px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: var(--head);
+    margin: 72px 0 24px;
+  }
+  .ic {
+    width: 34px; height: 34px; border-radius: 8px; background: var(--accent-soft); color: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center; flex: none; font-size: 15px;
+  }
+  .muted { color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    background: var(--surface); border-bottom: 2px solid var(--accent); border-radius: 3px;
+    padding: 2px 9px; font-size: 14px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px;
+    font-family: Rubik, sans-serif; font-weight: 500; font-size: 15px;
+    border: 1.5px solid var(--accent); color: var(--text);
+  }
+  .btn.primary { background: var(--accent); color: #06111f; }
+  .btn:hover { text-decoration: none; filter: brightness(1.1); }
+  nav.top { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; }
+  nav.top .brand { font-family: Rubik, sans-serif; font-weight: 600; color: var(--text); letter-spacing: .5px; text-transform: uppercase; }
+  nav.top .lang { font-size: 15px; }
+  footer { margin: 96px 0 40px; color: var(--muted); font-size: 14px; }
+  @media (max-width: 640px) {
+    body { font-size: 16px; padding: 0 16px; }
+    h2 { margin-top: 56px; font-size: 19px; }
+  }
+</style>

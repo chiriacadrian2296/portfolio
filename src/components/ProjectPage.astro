@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import type { Lang, Project } from '../content';
+import { projectHref, ui } from '../content';
+
+interface Props { lang: Lang; project: Project }
+const { lang, project: p } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const other: Lang = lang === 'it' ? 'en' : 'it';
+---
+<Base lang={lang} title={`${p.name} – Adrian Chiriac`} description={p.tagline[lang]} altPath={projectHref(other, p)}>
+  <a class="back" href={lang === 'it' ? `${base}#progetti` : `${base}en/#projects`}><i class="fa-solid fa-arrow-left"></i> {ui.back[lang]}</a>
+  <header class="head">
+    <span class="ic big"><i class={`fa-solid ${p.icon}`}></i></span>
+    <h1>{p.name}</h1>
+    <p class="tagline">{p.tagline[lang]}</p>
+    <p class="muted">{p.period[lang]}</p>
+    <div class="chips">{p.stack.map((s) => <span class="chip">{s}</span>)}</div>
+    {(p.link || p.code) && (
+      <div class="links">
+        {p.link && <a class="btn primary" href={p.link}><i class="fa-solid fa-arrow-up-right-from-square"></i>{ui.visit[lang]}</a>}
+        {p.code && <a class="btn" href={p.code}><i class="fa-brands fa-github"></i>{ui.code[lang]}</a>}
+      </div>
+    )}
+  </header>
+
+  <div class="numbers">
+    {p.numbers.map((n) => (
+      <div><strong>{n.value}</strong><span class="muted">{n.label[lang]}</span></div>
+    ))}
+  </div>
+
+  <h2><span class="ic"><i class="fa-solid fa-circle-question"></i></span>{ui.problem[lang]}</h2>
+  <p class="prose">{p.problem[lang]}</p>
+
+  <h2><span class="ic"><i class="fa-solid fa-hammer"></i></span>{ui.built[lang]}</h2>
+  <ul class="prose list">{p.built[lang].map((b) => <li>{b}</li>)}</ul>
+
+  <h2><span class="ic"><i class="fa-solid fa-robot"></i></span>{ui.how[lang]}</h2>
+  <ul class="prose list">{p.how[lang].map((b) => <li>{b}</li>)}</ul>
+
+  {p.gallery && (
+    <>
+      <h2><span class="ic"><i class="fa-solid fa-image"></i></span>{ui.gallery[lang]}</h2>
+      <div class="gallery">
+        {p.gallery.map((g) => (
+          <figure>
+            <Image src={g.image} alt={g.caption[lang]} width={320} densities={[1, 2]} />
+            <figcaption class="muted">{g.caption[lang]}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </>
+  )}
+
+  <h2><span class="ic"><i class="fa-solid fa-lightbulb"></i></span>{ui.learned[lang]}</h2>
+  <p class="prose">{p.learned[lang]}</p>
+</Base>
+
+<style>
+  .back { display: inline-block; margin-top: 16px; font-size: 15px; }
+  .head { padding: 32px 0 8px; display: grid; gap: 12px; justify-items: start; }
+  .ic.big { width: 52px; height: 52px; border-radius: 12px; font-size: 22px; }
+  h1 { font-size: clamp(36px, 6vw, 56px); font-weight: 600; }
+  .tagline { font-size: 20px; max-width: 720px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  .numbers { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 40px; }
+  .numbers div { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 2px; }
+  .numbers strong { font-family: Rubik, sans-serif; font-size: 30px; color: var(--accent); font-weight: 600; }
+  .prose { max-width: 720px; }
+  .list { padding-left: 22px; display: grid; gap: 10px; }
+  .list li::marker { color: var(--accent); }
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+  .gallery img { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); }
+  figcaption { font-size: 14px; margin-top: 6px; }
+</style>
