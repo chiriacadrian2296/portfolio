@@ -92,7 +92,7 @@ export const experience: { when: string; title: Text; org: Text; body: Text }[] 
   {
     when: '2026 –',
     title: { it: 'Progetti AI indipendenti', en: 'Independent AI projects' },
-    org: { it: 'Inner Stars, Codex Autonomous Loop, Paps Tutor', en: 'Inner Stars, Codex Autonomous Loop, Paps Tutor' },
+    org: { it: 'Inner Stars, Codex Autonomous Loop, Paps Tutor, Sgherro', en: 'Inner Stars, Codex Autonomous Loop, Paps Tutor, Sgherro' },
     body: {
       it: 'Prodotti progettati e rilasciati da solo, dirigendo agenti AI.',
       en: 'Products designed and shipped on my own, directing AI agents.',
@@ -315,6 +315,54 @@ export const projects: Project[] = [
     learned: {
       it: 'Un solo utente reale vale più di molte ipotesi: il prodotto è cambiato più per le sue domande che per le mie idee.',
       en: 'One real user is worth more than many assumptions: the product changed more because of her questions than my ideas.',
+    },
+  },
+  {
+    slug: { it: 'sgherro', en: 'sgherro' },
+    name: 'Sgherro',
+    icon: 'fa-music',
+    tagline: {
+      it: 'Una piattaforma per gestire artisti musicali AI, costruita per un cliente.',
+      en: 'A platform for managing AI music artists, built for a client.',
+    },
+    period: { it: 'Novembre 2026 – oggi', en: 'November 2026 – present' },
+    stack: ['Flutter', 'Dart', 'JSON', 'Codex'],
+    problem: {
+      it: 'Gestire artisti musicali creati con l’AI vuol dire tenere coerenti identità, voce e stile visivo tra immagini, testi, brani e post, su strumenti diversi. Senza una fonte unica, ogni contenuto rischia di allontanarsi dal personaggio.',
+      en: 'Managing music artists created with AI means keeping identity, voice and visual style consistent across images, lyrics, tracks and posts, on different tools. Without a single source, every piece of content can drift away from the character.',
+    },
+    built: {
+      it: [
+        'Archivio di “bibbie” degli artisti: identità, personalità, voce, musica, aspetto e riferimenti visivi, con importazione ed esportazione JSON e un template da compilare in chat.',
+        'Preparazione dei prompt: la bibbia dell’artista e l’idea del cliente diventano un testo pronto per gli strumenti AI esterni.',
+        'Editor di post con anteprime per piattaforma e monitoraggio di album, brani e pubblicazioni confermate.',
+      ],
+      en: [
+        'An archive of artist “bibles”: identity, personality, voice, music, look and visual references, with JSON import and export and a template to fill in a chat.',
+        'Prompt preparation: the artist’s bible and the client’s idea become a text ready for external AI tools.',
+        'A post editor with per-platform previews, and tracking of albums, tracks and confirmed releases.',
+      ],
+    },
+    how: {
+      it: [
+        'Prima di scrivere codice, il flusso di lavoro del cliente: cosa si fa a mano, cosa va tenuto sotto controllo, da dove partire.',
+        'Un “brain” di progetto ispirato ai sistemi di memoria per agenti: fatti confermati (semantica), diario datato delle discussioni (episodica), procedure ripetibili e un registro delle decisioni con fonte e motivazione.',
+        'Le decisioni del cliente restano separate dalle proposte dell’agente; la direzione creativa resta al cliente.',
+      ],
+      en: [
+        'Before writing code, the client’s workflow: what is done by hand, what the client wants to keep control of, where to start.',
+        'A project “brain” inspired by agent memory systems: confirmed facts (semantic), a dated log of discussions (episodic), repeatable procedures and a decision log with source and rationale.',
+        'The client’s decisions stay separate from the agent’s proposals; creative direction stays with the client.',
+      ],
+    },
+    numbers: [
+      { value: '12', label: { it: 'decisioni documentate', en: 'documented decisions' } },
+      { value: '3', label: { it: 'aree: bibbie, generazione, monitoraggio', en: 'areas: bibles, generation, tracking' } },
+      { value: '1', label: { it: 'cliente reale', en: 'real client' } },
+    ],
+    learned: {
+      it: 'Con un cliente il lavoro più importante è capire e mettere per iscritto: un registro delle decisioni evita di ridiscutere ogni volta e tiene allineati persone e agenti.',
+      en: 'With a client the most important work is understanding and writing things down: a decision log avoids re-discussing everything and keeps people and agents aligned.',
     },
   },
 ];
