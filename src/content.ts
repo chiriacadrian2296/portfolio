@@ -118,11 +118,11 @@ export const experience: { when: string; title: Text; org: Text; body: Text }[] 
   },
   {
     when: '2019 – 2020',
-    title: { it: 'Software Developer', en: 'Software Developer' },
+    title: { it: 'Junior Software Developer (stage)', en: 'Junior Software Developer (internship)' },
     org: { it: 'GisData', en: 'GisData' },
     body: {
-      it: 'Sistemi di ticketing automatico in Python; avvio della riscrittura in Flutter dell’app mobile inforMAPP.',
-      en: 'Automated ticketing systems in Python; started rewriting the inforMAPP mobile app in Flutter.',
+      it: 'Supporto ai sistemi di ticketing automatico seguendo procedure definite e consultando i database; negli ultimi mesi, avvio della riscrittura in Flutter dell’app mobile inforMAPP (interfaccia e chiamate API).',
+      en: 'Support for automated ticketing systems, following defined procedures and querying the databases; in the last months, started rewriting the inforMAPP mobile app in Flutter (interface and API calls).',
     },
   },
   {
