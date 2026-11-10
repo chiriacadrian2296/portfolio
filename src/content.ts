@@ -121,8 +121,8 @@ export const experience: { when: string; title: Text; org: Text; body: Text }[] 
     title: { it: 'Software Developer', en: 'Software Developer' },
     org: { it: 'GisData', en: 'GisData' },
     body: {
-      it: 'Sistemi di ticketing automatico in Python; app inforMAPP ricostruita da zero in Flutter e pubblicata sugli store.',
-      en: 'Automated ticketing systems in Python; the inforMAPP app rebuilt from scratch in Flutter and published on the stores.',
+      it: 'Sistemi di ticketing automatico in Python; avvio della riscrittura in Flutter dell’app mobile inforMAPP.',
+      en: 'Automated ticketing systems in Python; started rewriting the inforMAPP mobile app in Flutter.',
     },
   },
   {
