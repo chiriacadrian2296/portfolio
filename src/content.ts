@@ -96,7 +96,7 @@ export const experience: { when: string; title: Text; org: Text; body: Text }[] 
   {
     when: '2026 –',
     title: { it: 'Progetti AI indipendenti', en: 'Independent AI projects' },
-    org: { it: 'Inner Stars, AutoLoop, Codex Autonomous Loop, Paps Tutor, Sgherro', en: 'Inner Stars, AutoLoop, Codex Autonomous Loop, Paps Tutor, Sgherro' },
+    org: { it: 'Inner Stars, AutoLoop, Paps Tutor, Sgherro', en: 'Inner Stars, AutoLoop, Paps Tutor, Sgherro' },
     body: {
       it: 'Prodotti progettati e rilasciati da solo, dirigendo agenti AI.',
       en: 'Products designed and shipped on my own, directing AI agents.',
@@ -232,14 +232,14 @@ export const projects: Project[] = [
       it: 'Un’app per Windows che fa portare a termine a Codex o Claude un piano di sviluppo, un blocco alla volta.',
       en: 'A Windows app that has Codex or Claude see a development plan through, one block at a time.',
     },
-    period: { it: 'Novembre 2026', en: 'November 2026' },
+    period: { it: '2026', en: '2026' },
     stack: ['Flutter', 'Dart', 'Windows', 'Codex CLI', 'Claude Code', 'Inno Setup'],
     link: 'https://chiriacadrian2296.github.io/auto-loop/',
     code: 'https://github.com/chiriacadrian2296/auto-loop',
     cover: alWindowDark,
     problem: {
-      it: 'Codex Autonomous Loop funzionava, ma solo da terminale, solo con Codex e solo con piani scritti apposta in JSON. E durante un’esecuzione lunga non si capiva a colpo d’occhio dove fosse arrivato l’agente.',
-      en: 'Codex Autonomous Loop worked, but only from a terminal, only with Codex and only with plans written in JSON for it. And during a long run you could not tell at a glance where the agent had got to.',
+      it: 'Avevo piani di sviluppo completi, ma l’agente si fermava dopo ogni passo e aspettava che gli dicessi di continuare. Il collo di bottiglia ero io. La prima risposta, uno script da terminale, funzionava solo con Codex e con piani scritti apposta; e durante un’esecuzione lunga non si capiva dove fosse arrivato l’agente.',
+      en: 'I had complete development plans, but the agent stopped after every step and waited for me to tell it to continue. I was the bottleneck. The first answer, a terminal script, only worked with Codex and with plans written for it; and during a long run you could not tell where the agent had got to.',
     },
     built: {
       it: [
@@ -259,11 +259,13 @@ export const projects: Project[] = [
     },
     how: {
       it: [
+        'È nato come Codex Autonomous Loop, un orchestratore in Python (~1.000 righe, nessuna dipendenza) con un piano JSON, verifiche e commit a ogni attività, testato con un finto Codex. Usato su più progetti, è diventato un’app.',
         'Io ho deciso cosa costruire e ho provato ogni schermata nella demo; l’agente AI ha scritto codice, test e screenshot di controllo.',
         'Gli esperimenti più grandi sull’interfaccia sono stati fatti su un ramo a parte, uniti solo quando convincevano.',
         'Testata con un agente finto che imita le CLI, poi collaudata con Codex e Claude veri: pausa dopo un blocco, verifica, commit, un blocco impossibile saltato e la ripresa.',
       ],
       en: [
+        'It started as Codex Autonomous Loop, a Python orchestrator (~1,000 lines, no dependencies) with a JSON plan, checks and a commit for every task, tested with a fake Codex. After using it on several projects, it became an app.',
         'I decided what to build and tried every screen in the demo; the AI agent wrote the code, the tests and screenshots to check the interface.',
         'The bigger interface experiments lived on a separate branch, merged only once they convinced.',
         'Tested with a fake agent that mimics the CLIs, then with the real Codex and Claude: pause after a block, checks, commits, an impossible block skipped and the resume.',
@@ -271,13 +273,13 @@ export const projects: Project[] = [
     },
     numbers: [
       { value: '~8.900', label: { it: 'righe di Dart', en: 'lines of Dart' } },
-      { value: '5', label: { it: 'giorni, dall’idea alla release', en: 'days, from idea to release' } },
+      { value: '5', label: { it: 'giorni, dallo script all’app', en: 'days, from script to app' } },
       { value: '30+', label: { it: 'test automatici', en: 'automated tests' } },
       { value: '2', label: { it: 'agenti supportati', en: 'supported agents' } },
     ],
     learned: {
-      it: 'Un agente autonomo serve solo se si capisce cosa sta facendo: un’esecuzione di ore deve leggersi a colpo d’occhio. E i test con un agente finto non bastano: il collaudo con quelli veri trova problemi che i test non vedono.',
-      en: 'An autonomous agent is only useful if you can tell what it is doing: an hours-long run must read at a glance. And tests with a fake agent are not enough: running the real ones finds problems the tests cannot see.',
+      it: 'Dare autonomia a un agente vuol dire soprattutto decidere quando deve fermarsi. E serve solo se si capisce cosa sta facendo: un’esecuzione di ore deve leggersi a colpo d’occhio. E i test con un agente finto non bastano: il collaudo con quelli veri trova problemi che i test non vedono.',
+      en: 'Giving an agent autonomy is mostly about deciding when it must stop. And it is only useful if you can tell what it is doing: an hours-long run must read at a glance. And tests with a fake agent are not enough: running the real ones finds problems the tests cannot see.',
     },
     gallery: [
       { image: alWindowDark, caption: { it: 'La finestra durante un’esecuzione', en: 'The window during a run' } },
@@ -285,54 +287,6 @@ export const projects: Project[] = [
       { image: alPanels, caption: { it: 'Avanzamento e attività', en: 'Progress and activity' } },
       { image: alControl, caption: { it: 'Pannello di controllo e blocchi', en: 'Control panel and blocks' } },
     ],
-  },
-  {
-    slug: { it: 'codex-autonomous-loop', en: 'codex-autonomous-loop' },
-    name: 'Codex Autonomous Loop',
-    icon: 'fa-diagram-project',
-    tagline: {
-      it: 'Un orchestratore in Python che fa eseguire a un agente AI un piano di sviluppo completo, in autonomia. Da qui è nato AutoLoop.',
-      en: 'A Python orchestrator that has an AI agent carry out a whole development plan on its own. AutoLoop grew out of it.',
-    },
-    period: { it: '2026', en: '2026' },
-    stack: ['Python', 'Codex CLI', 'Git', 'JSON'],
-    problem: {
-      it: 'Avevo piani di sviluppo completi, ma l’agente si fermava dopo ogni passo e aspettava che gli dicessi di continuare. Il collo di bottiglia ero io.',
-      en: 'I had complete development plans, but the agent stopped after every step and waited for me to tell it to continue. I was the bottleneck.',
-    },
-    built: {
-      it: [
-        'Un supervisore che legge un piano JSON e fa eseguire a Codex un’attività alla volta.',
-        'Verifiche indipendenti dopo ogni attività e commit descrittivo solo se passano.',
-        'Limiti su tentativi, tempi e uscita; ripresa dall’ultimo checkpoint dopo un’interruzione.',
-        'Esecuzione nella sandbox di Windows, controlli sull’ambiente prima di partire, nessuna dipendenza esterna.',
-      ],
-      en: [
-        'A supervisor that reads a JSON plan and has Codex carry out one task at a time.',
-        'Independent checks after every task, with a descriptive commit only if they pass.',
-        'Limits on attempts, time and output; resume from the last checkpoint after an interruption.',
-        'Runs in the Windows sandbox, checks the environment before starting, no external dependencies.',
-      ],
-    },
-    how: {
-      it: [
-        'Scritto in Python standard, diviso in moduli (piano, processo, git, avanzamento, errori).',
-        'Testato con un finto Codex che simula successi, errori e blocchi, così il ciclo si prova senza consumare richieste vere.',
-      ],
-      en: [
-        'Written in plain Python, split into modules (plan, process, git, progress, errors).',
-        'Tested with a fake Codex that simulates successes, failures and hangs, so the loop is tested without spending real requests.',
-      ],
-    },
-    numbers: [
-      { value: '~1.000', label: { it: 'righe di Python', en: 'lines of Python' } },
-      { value: '0', label: { it: 'dipendenze esterne', en: 'external dependencies' } },
-      { value: '2+', label: { it: 'progetti su cui l’ho usato', en: 'projects I used it on' } },
-    ],
-    learned: {
-      it: 'Dare autonomia a un agente vuol dire soprattutto decidere quando deve fermarsi: i limiti e le verifiche sono la parte più importante.',
-      en: 'Giving an agent autonomy is mostly about deciding when it must stop: limits and checks are the most important part.',
-    },
   },
   {
     slug: { it: 'paps-tutor', en: 'paps-tutor' },
