@@ -5,6 +5,10 @@ import skyAreas from './assets/inner-stars/sky-areas.png';
 import stats from './assets/inner-stars/stats-overview.png';
 import reflection from './assets/inner-stars/reflection-detail.png';
 import share from './assets/inner-stars/share-composition.png';
+import alWindowDark from './assets/autoloop/window-dark.png';
+import alWindowLight from './assets/autoloop/window-light.png';
+import alPanels from './assets/autoloop/panels.png';
+import alControl from './assets/autoloop/control-progress.png';
 
 export type Lang = 'it' | 'en';
 type Text = Record<Lang, string>;
@@ -92,7 +96,7 @@ export const experience: { when: string; title: Text; org: Text; body: Text }[] 
   {
     when: '2026 –',
     title: { it: 'Progetti AI indipendenti', en: 'Independent AI projects' },
-    org: { it: 'Inner Stars, Codex Autonomous Loop, Paps Tutor, Sgherro', en: 'Inner Stars, Codex Autonomous Loop, Paps Tutor, Sgherro' },
+    org: { it: 'Inner Stars, AutoLoop, Codex Autonomous Loop, Paps Tutor, Sgherro', en: 'Inner Stars, AutoLoop, Codex Autonomous Loop, Paps Tutor, Sgherro' },
     body: {
       it: 'Prodotti progettati e rilasciati da solo, dirigendo agenti AI.',
       en: 'Products designed and shipped on my own, directing AI agents.',
@@ -221,12 +225,74 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: { it: 'autoloop', en: 'autoloop' },
+    name: 'AutoLoop',
+    icon: 'fa-arrows-rotate',
+    tagline: {
+      it: 'Un’app per Windows che fa portare a termine a Codex o Claude un piano di sviluppo, un blocco alla volta.',
+      en: 'A Windows app that has Codex or Claude see a development plan through, one block at a time.',
+    },
+    period: { it: 'Novembre 2026', en: 'November 2026' },
+    stack: ['Flutter', 'Dart', 'Windows', 'Codex CLI', 'Claude Code', 'Inno Setup'],
+    link: 'https://chiriacadrian2296.github.io/auto-loop/',
+    code: 'https://github.com/chiriacadrian2296/auto-loop',
+    cover: alWindowDark,
+    problem: {
+      it: 'Codex Autonomous Loop funzionava, ma solo da terminale, solo con Codex e solo con piani scritti apposta in JSON. E durante un’esecuzione lunga non si capiva a colpo d’occhio dove fosse arrivato l’agente.',
+      en: 'Codex Autonomous Loop worked, but only from a terminal, only with Codex and only with plans written in JSON for it. And during a long run you could not tell at a glance where the agent had got to.',
+    },
+    built: {
+      it: [
+        'Un’app desktop che divide da sola un piano in Markdown o testo in blocchi e li affida all’agente uno alla volta, con Codex CLI o Claude Code.',
+        'Richiamo quando l’agente si ferma, watchdog sui silenzi, attesa quando la quota finisce, comando di verifica e commit git a ogni blocco.',
+        'Avanzamento per stato (completati, in corso, bloccati, da fare, saltati), attività per blocchi e invocazioni e una mappa dell’esecuzione nel tempo.',
+        '“Fermati dopo questo blocco” per controllare il lavoro prima di riprendere; account e profili separati per le due CLI.',
+        'Installer per Windows, release su GitHub e una landing in italiano e inglese.',
+      ],
+      en: [
+        'A desktop app that splits a Markdown or text plan into blocks by itself and hands them to the agent one at a time, with Codex CLI or Claude Code.',
+        'Relaunch when the agent stops, a watchdog for silences, waiting when the quota runs out, a check command and a git commit for every block.',
+        'Progress by state (done, in progress, blocked, to do, skipped), activity by blocks and invocations, and a map of the run over time.',
+        '“Stop after this block” to review the work before resuming; separate accounts and profiles for the two CLIs.',
+        'A Windows installer, a GitHub release and a landing page in Italian and English.',
+      ],
+    },
+    how: {
+      it: [
+        'Io ho deciso cosa costruire e ho provato ogni schermata nella demo; l’agente AI ha scritto codice, test e screenshot di controllo.',
+        'Gli esperimenti più grandi sull’interfaccia sono stati fatti su un ramo a parte, uniti solo quando convincevano.',
+        'Testata con un agente finto che imita le CLI, poi collaudata con Codex e Claude veri: pausa dopo un blocco, verifica, commit, un blocco impossibile saltato e la ripresa.',
+      ],
+      en: [
+        'I decided what to build and tried every screen in the demo; the AI agent wrote the code, the tests and screenshots to check the interface.',
+        'The bigger interface experiments lived on a separate branch, merged only once they convinced.',
+        'Tested with a fake agent that mimics the CLIs, then with the real Codex and Claude: pause after a block, checks, commits, an impossible block skipped and the resume.',
+      ],
+    },
+    numbers: [
+      { value: '~8.900', label: { it: 'righe di Dart', en: 'lines of Dart' } },
+      { value: '5', label: { it: 'giorni, dall’idea alla release', en: 'days, from idea to release' } },
+      { value: '30+', label: { it: 'test automatici', en: 'automated tests' } },
+      { value: '2', label: { it: 'agenti supportati', en: 'supported agents' } },
+    ],
+    learned: {
+      it: 'Un agente autonomo serve solo se si capisce cosa sta facendo: un’esecuzione di ore deve leggersi a colpo d’occhio. E i test con un agente finto non bastano: il collaudo con quelli veri trova problemi che i test non vedono.',
+      en: 'An autonomous agent is only useful if you can tell what it is doing: an hours-long run must read at a glance. And tests with a fake agent are not enough: running the real ones finds problems the tests cannot see.',
+    },
+    gallery: [
+      { image: alWindowDark, caption: { it: 'La finestra durante un’esecuzione', en: 'The window during a run' } },
+      { image: alWindowLight, caption: { it: 'Tema chiaro', en: 'Light theme' } },
+      { image: alPanels, caption: { it: 'Avanzamento e attività', en: 'Progress and activity' } },
+      { image: alControl, caption: { it: 'Pannello di controllo e blocchi', en: 'Control panel and blocks' } },
+    ],
+  },
+  {
     slug: { it: 'codex-autonomous-loop', en: 'codex-autonomous-loop' },
     name: 'Codex Autonomous Loop',
     icon: 'fa-diagram-project',
     tagline: {
-      it: 'Un orchestratore in Python che fa eseguire a un agente AI un piano di sviluppo completo, in autonomia.',
-      en: 'A Python orchestrator that has an AI agent carry out a whole development plan on its own.',
+      it: 'Un orchestratore in Python che fa eseguire a un agente AI un piano di sviluppo completo, in autonomia. Da qui è nato AutoLoop.',
+      en: 'A Python orchestrator that has an AI agent carry out a whole development plan on its own. AutoLoop grew out of it.',
     },
     period: { it: '2026', en: '2026' },
     stack: ['Python', 'Codex CLI', 'Git', 'JSON'],
